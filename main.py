@@ -35,7 +35,11 @@ def main():
 
             draw.draw_circle(screen, {'color':self.color, 'position':self.position, 'radius':50})
 
-    ball = Circle()
+    circles = []
+
+    for i in range(random.randint(5,10)):
+        circles.append(Circle(color=[random.randint(1,255),random.randint(1,255),random.randint(1,255)], size=random.randint(5,20), position=[random.randint(0,200),random.randint(0,200)], velocity=[random.choice([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]), random.choice([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5])]))
+        
 
 
     while running:
@@ -48,8 +52,10 @@ def main():
 
         screen.fill(config.WHITE) # Use color from config
 
+        for ball in circles:
+            ball.move()
 
-        ball.move()
+
     
 
         pygame.display.flip()
